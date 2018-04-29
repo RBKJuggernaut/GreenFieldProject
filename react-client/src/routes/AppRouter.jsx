@@ -5,7 +5,7 @@ import JobsForm from '../components/JobsForm.jsx';
 import NavBar from '../components/Header.jsx';
 import Login from '../components/Login.jsx';
 import Home from '../components/Home.jsx';
-import Profile from '../components/profile.jsx';
+import Profile from '../components/Profile.jsx';
 import NotAuthenticatedHome from '../components/NotAuthenticatedHome.jsx';
 import UserJobs from '../components/UserJobs.jsx';
 import axios from 'axios';
