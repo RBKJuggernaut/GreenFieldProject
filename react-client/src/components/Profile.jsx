@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import JobsForUser from './jobsForUser.jsx';
+import JobsForUser from './JobsForUser.jsx';
 import Search from './Search.jsx';
 import UserInfo from './UserInfo.jsx';
 class Profile extends React.Component {
