@@ -91,7 +91,16 @@ app.get('/userJobs', function(req, res){
 		}
 	});
 });
-
+app.get('/userJobss/:userName', function(req, res){
+	console.log(req.params.userName)
+	Jobs.jobByUserName({"user": req.params.userName}, function(err, job){
+		if(err){
+			console.log(err);
+		} else {
+			res.send(job);
+		}
+	});
+});
 //??
 app.post('/userJob', function(req, res){
 		Jobs.getUserJob(req.body.jobTitle,req.body.user, function(err, user){
