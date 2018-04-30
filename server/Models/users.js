@@ -54,6 +54,29 @@ var createUsers = function(data, callback){
   ///save to database
   Users.create(userdata, callback);
 };
+
+
+
+// a function to retrive all users 
+
+var retriveALlUsers=function(callback){
+
+  Users.find({},function(data,err){
+    if (err){
+      callback(err,null);
+    }
+    else{
+      callback(null,data)
+    }
+
+  })
+}
+
+
+
+
+
+
 var getUser = function(userName, password, callback){
   ///query for checking the usename
   var query = Users.where({ userName: userName });
@@ -105,5 +128,6 @@ module.exports.updateUsers = updateUsers;
 module.exports.deleteUser = deleteUser;
 module.exports.getUser = getUser;
 module.exports.getUserInfo = getUserInfo;
+module.exports.retriveALlUsers=retriveALlUsers;
 
 
