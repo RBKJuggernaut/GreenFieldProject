@@ -9,6 +9,7 @@ import UpdateUser from '../components/UpdateUser.jsx';
 import NotAuthenticatedHome from '../components/NotAuthenticatedHome.jsx';
 import UserJobs from '../components/UserJobs.jsx';
 import Profile from '../components/Profile.jsx';
+import UserProfile from '../components/UserProfile.jsx';
 import axios from 'axios';
 
 class AppRouter extends React.Component {
@@ -48,6 +49,8 @@ axios.get('/logged')
 			<Route  path = "/login"	component = {Login} />	
 			<Route  path = "/Profile"	component = {Profile} />
 			<Route  path = "/logout"	component = {NotAuthenticatedHome} />	
+			<Route  path = "/userProfile"	component = {UserProfile} />	
+
 
 
 
