@@ -6,11 +6,8 @@ class NavBar extends React.Component {
     super(props);
     this.state = { 
       session: false
-    }
-
-  
+    } 
   }
-
     render(){
     	if(this.props.session){
     		return(
