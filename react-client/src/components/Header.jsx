@@ -10,6 +10,7 @@ class NavBar extends React.Component {
 
   }
     render(){
+    	console.log('ttteeessssttt')
     	if(this.props.session){
     		return(
 	<nav className="navbar navbar-fixed-top" >
