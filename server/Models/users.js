@@ -100,6 +100,17 @@ var getUser = function(userName, password, callback){
       }
   });
 };
+var findUserr = function(userName, callback){
+  ///query for checking the usename
+  
+  Users.find(userName).exec(function(err, data){
+     if(err){
+      callback(err, null)
+    } else {
+    callback(null, data)
+  }
+  });
+};
 
 var getUserInfo= function(userName, callback){
   ///query for checking the usename
@@ -128,5 +139,6 @@ module.exports.deleteUser = deleteUser;
 module.exports.getUser = getUser;
 module.exports.getUserInfo = getUserInfo;
 module.exports.retriveALlUsers=retriveALlUsers;
+module.exports.findUserr=findUserr;
 
 
