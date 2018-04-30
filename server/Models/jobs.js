@@ -24,7 +24,21 @@ var jobsSchema = mongoose.Schema({
   {
     type:Date,
     default:Date.now
-  }
+  },
+
+  comments:{
+  	type:[{username:String,comment:String}],
+   },
+
+   interestedUsers:{
+   	type:[String]
+   },
+
+   takenBy:{
+   	type:String
+
+   }
+
 });
 
 
