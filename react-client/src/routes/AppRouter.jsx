@@ -5,10 +5,12 @@ import JobsForm from '../components/JobsForm.jsx';
 import NavBarComponent from '../components/NavBarComponent.jsx';
 import Login from '../components/Login.jsx';
 import Home from '../components/Home.jsx';
-import Profile from '../components/Profile.jsx';
+import UpdateUser from '../components/UpdateUser.jsx';
 import NotAuthenticatedHome from '../components/NotAuthenticatedHome.jsx';
 import UserJobs from '../components/UserJobs.jsx';
+import Profile from '../components/Profile.jsx';
 import axios from 'axios';
+
 class AppRouter extends React.Component {
 constructor(props) {
     super(props);
@@ -42,8 +44,9 @@ axios.get('/logged')
 			<Route  path = "/signup" component = {SignUpForm} />
 			<Route  path = "/UserJobs/:jobTitle/:userName" component = {UserJobs} />				
 			<Route  path = "/jobsForm" component = {JobsForm} />
-			<Route  path = "/profile" component = {Profile} />			
+			<Route  path = "/UpdateUser" component = {UpdateUser} />			
 			<Route  path = "/login"	component = {Login} />	
+			<Route  path = "/Profile"	component = {Profile} />
 			<Route  path = "/logout"	component = {NotAuthenticatedHome} />	
 
 
