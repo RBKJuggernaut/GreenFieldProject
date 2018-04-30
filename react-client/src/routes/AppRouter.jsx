@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter, Route, Switch, Link, NavLink} from 'react-router-dom';
 import SignUpForm from '../components/SignUp.jsx';
 import JobsForm from '../components/JobsForm.jsx';
-import NavBar from '../components/Header.jsx';
+import NavBarComponent from '../components/NavBarComponent.jsx';
 import Login from '../components/Login.jsx';
 import Home from '../components/Home.jsx';
 import Profile from '../components/Profile.jsx';
@@ -36,7 +36,7 @@ axios.get('/logged')
     return (
 	<BrowserRouter>
 		<div>
-			<NavBar session={this.state.session}/><br /><br />
+			<NavBarComponent session={this.state.session}/><br /><br />
 			<Switch>
 			<Route  exact path = "/"  component = {Home}/>	
 			<Route  path = "/signup" component = {SignUpForm} />

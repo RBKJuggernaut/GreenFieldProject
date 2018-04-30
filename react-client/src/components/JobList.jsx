@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, FormControl, Row, Col, ButtonToolbar } from 'react-bootstrap';
-class HomeDisplay extends React.Component {
+class JobList extends React.Component {
   constructor(props) {
   	
     super(props);
@@ -71,4 +71,4 @@ render() {
     )
   }
 }
-export default HomeDisplay;
+export default JobList;
