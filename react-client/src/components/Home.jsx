@@ -14,7 +14,7 @@ class Home extends React.Component {
   logout(event) {
     var that=this
     event.preventDefault();
-    axios.post('/logout', this.state.states)
+    axios.get('/logout', this.state.states)
         .then(function (response) {
         window.location.href = "/login";
         })
@@ -51,7 +51,7 @@ class Home extends React.Component {
 
 //make new get requests for each filter
   componentDidMount() {
-    console.log("hi");
+    
     axios.get('/jobs')
     .then(response => {
     const posts = response.data;
