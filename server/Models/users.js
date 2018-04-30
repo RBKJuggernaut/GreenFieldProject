@@ -138,10 +138,7 @@ module.exports.updateUsers = updateUsers;
 module.exports.deleteUser = deleteUser;
 module.exports.getUser = getUser;
 module.exports.getUserInfo = getUserInfo;
-<<<<<<< HEAD
 module.exports.retriveALlUsers=retriveALlUsers;
-=======
 module.exports.findUserr=findUserr;
->>>>>>> findUser
 
 
