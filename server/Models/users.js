@@ -56,7 +56,6 @@ var createUsers = function(data, callback){
 };
 
 
-
 // a function to retrive all users 
 
 var retriveALlUsers=function(callback){
