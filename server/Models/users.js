@@ -61,7 +61,7 @@ var createUsers = function(data, callback){
 
 var retriveALlUsers=function(callback){
 
-  Users.find({},function(data,err){
+  Users.find({},'name email gender age phoneNumber nationality rate address',function(data,err){
     if (err){
       callback(err,null);
     }
