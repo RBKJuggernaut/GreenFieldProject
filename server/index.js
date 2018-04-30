@@ -47,6 +47,23 @@ app.use(session({
 // 	next();
 // })
 
+
+
+// to handle /users request to retrive all users
+app.get('/users',function(req,res){
+	Users.retriveALlUsers(function(err,data){
+		if (err){
+			res.status(500);
+			res.send(err);
+		}
+		else{
+			res.status(200);
+			res.send(data);
+		}
+	})
+})
+
+
 //it renders all the jobs
 app.get('/jobs', function(req, res){
 	Jobs.allJobs(function(err, jobs){
