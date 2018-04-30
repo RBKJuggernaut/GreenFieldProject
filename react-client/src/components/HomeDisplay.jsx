@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, FormControl, Row, Col, ButtonToolbar } from 'react-bootstrap';
 class HomeDisplay extends React.Component {
   constructor(props) {
-  	console.log(props.item.to)
+  	
     super(props);
   }
 
