@@ -197,6 +197,19 @@ app.post('/someJobs', function (req, res) {
 	});
 });
 
+
+// search users
+app.post('/findUser', function (req, res) {
+	
+	Users.findUserr({"userName":req.body.userName}, function(err, user){
+		if(err){
+			console.log(err);
+		} else {
+			res.send(user);
+		}
+	});
+});
+
 //it searches jobs by category
 app.post('/jobCategory', function (req, res) {
 	Jobs.jobsByCategory({"category":req.body.category}, function(err, job){
