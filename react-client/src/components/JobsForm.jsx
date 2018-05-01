@@ -33,7 +33,7 @@ class JobsForm extends React.Component {
 	handleSubmit(event) {
 		var that=this;
 		event.preventDefault();
-		axios.post('/job', this.state.states)
+		axios.post('/job', that.state.states)
   			.then(function (response) {
   				that.setState({message:"Job Added"}); 
     		

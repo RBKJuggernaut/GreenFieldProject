@@ -16,12 +16,20 @@ class Profile extends React.Component {
 
 //make new get requests for each filter
   componentDidMount() {
+    var that =this;
     axios.get('/userJobs')
     .then(response => {
     const posts = response.data;
-    this.setState({jobs:posts});
-    console.log(this.state.jobs)
+    that.setState({jobs:posts});
     
+  }).catch(function (error) {
+    console.log(error);
+  });
+  axios.get('/UserInfo')
+    .then(response => {
+    const posts = response.data;
+    that.setState({user:posts});
+    console.log(that.state.user.image)
   }).catch(function (error) {
     console.log(error);
   });
@@ -39,11 +47,21 @@ render() {
   return (
   
     <div id="profile">
-    <div></div>
-    <br/>
+    <div className="row container-fluid">
+    <div className="col-md-4 " >
+    <img src={this.state.user.image}/>
+    
+    </div>
+    <div className="col-md-8">
+
     <div>
     {arr}
-    </div><br /><br />
+    </div>
+
+    </div>
+     </div>
+    <br />
+    <br />
 
     <div>
     <h1>
