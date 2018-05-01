@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Button, FormControl, Row, Col, ButtonToolbar } from 'react-bootstrap';
+import { Button, FormControl, Row, Col, ButtonToolbar,Radio } from 'react-bootstrap';
 class UserInfo extends React.Component {
    constructor(props) {
     super(props);
@@ -81,10 +81,12 @@ render() {
      </Row><br />
      <Row>
       	<Col md={4}>
-	        <label id='signlable'>*Gender
-	        <FormControl type="text" name="gender" placeholder="Gender" required
-	          onChange={this.onChange}  value={this.state.states.gender} />
-	        </label><br />
+	        
+          <label id='signlable' onChange={this.onChange}  value={this.state.states.gender}>*Gender
+            <Radio name="groupOptions">femal</Radio>
+            <Radio name="groupOptions">male</Radio>
+    </label>
+
         </Col>
 		<Col md={4}>
     <label id='signlable'>Nationality

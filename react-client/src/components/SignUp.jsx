@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import $ from 'jquery';
-import { Button, FormControl, Row, Col } from 'react-bootstrap';
+import { Button, FormControl, Row, Col,Radio} from 'react-bootstrap';
 
 
 class SignUpForm extends React.Component {
@@ -88,10 +88,12 @@ class SignUpForm extends React.Component {
   </label><br />    
   </Col>
   <Col md={4}>
-  <label id='signlable'>*Gender
-    <FormControl type="text" name="gender" placeholder="Gender" required
-      onChange={this.onChange} />
-    </label><br />
+    <label id='signlable' onChange={this.onChange}>*Gender
+    <Radio name="groupOptions">femal</Radio>
+    <Radio name="groupOptions">male</Radio>
+    </label>
+
+    <br />
   </Col>
   </Row><br />
   <Row>
