@@ -8,9 +8,6 @@ class JobList extends React.Component {
   	
     super(props);
   }
-
-
- 
 render() {
 	let phonNum=0;
 	if(this.props.item.userInfo.length>0){
