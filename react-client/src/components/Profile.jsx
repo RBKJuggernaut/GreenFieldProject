@@ -8,7 +8,7 @@ class Profile extends React.Component {
     super(props);
     this.state = { 
       jobs: [],
-      user:[]
+      user:[],
     }
   }
 
