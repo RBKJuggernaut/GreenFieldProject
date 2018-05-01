@@ -31,6 +31,9 @@ var usersSchema = mongoose.Schema({
   rate:{
     type:Number,
     default:0
+  },
+  image:{
+    type:String
   }
 });
 

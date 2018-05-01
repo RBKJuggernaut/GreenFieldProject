@@ -27,11 +27,12 @@ class UserInfo extends React.Component {
 
     };
    componentDidMount() {
+    var that=this;
    	  axios.get('/userInfo')
     .then(response => {
     const posts = response.data;
     console.log(posts);
-    this.setState({states:posts});
+    that.setState({states:posts});
     
   })
   .catch(function (error) {
@@ -40,8 +41,9 @@ class UserInfo extends React.Component {
    }
 
     handleSubmit(event) {
+       var that=this;
          event.preventDefault();
-        axios.put('/updateUser', this.state.states)
+        axios.put('/updateUser', that.state.states)
           .then(function (response) {
             console.log(response);
         })

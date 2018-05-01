@@ -14,24 +14,26 @@ class UpdateUser extends React.Component {
 
 //make new get requests for each filter
   componentDidMount() {
+    var that =this;
     axios.get('/userJobs')
     .then(response => {
     const posts = response.data;
-    this.setState({jobs:posts});
+    that.setState({jobs:posts});
     
     
   }).catch(function (error) {
     console.log(error);
   });
-  this.getUserInfo();
+  that.getUserInfo();
 }
 
 getUserInfo(){
+   var that=this;
     axios.get('/userInfo')
     .then(response => {
     const posts = response.data;
     console.log(posts);
-    this.setState({user:posts});
+    that.setState({user:posts});
     
   })
   .catch(function (error) {

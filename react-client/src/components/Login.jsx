@@ -27,7 +27,7 @@ class Login extends React.Component {
 	handleSubmit(event) {
 		var that=this
 		event.preventDefault();
-		axios.post('/login', this.state.states)
+		axios.post('/login', that.state.states)
   			.then(function (response) {
           
           if(response.data==="wrong password"){

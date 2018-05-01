@@ -13,10 +13,11 @@ class SignUpForm extends React.Component {
         password: '',
         email: '',
         gender: '',
-        phoneNumber: '',
+        phoneNumber: '',  
         address: '',
         age: '',
-        nationality: ''},
+        nationality: '',
+        image:''},
       message:''
     }
 
@@ -32,9 +33,10 @@ class SignUpForm extends React.Component {
     };
 
     handleSubmit(event) {
+      console.log(this.state.states)
       var that=this;
          event.preventDefault();
-        axios.post('/signup', this.state.states)
+        axios.post('/signup', that.state.states)
           .then(function (response) {
             that.setState({message:"User Added"});
               // window.location.href = "/login";
@@ -51,6 +53,13 @@ class SignUpForm extends React.Component {
 <span id="req" className="wrapper">* required</span>
   <form onSubmit = {this.handleSubmit}>
   <Row>
+  <Col md={4}>
+    <label id='signlable'>*image
+      <FormControl type="text" name="image" placeholder="url-image" autoFocus required
+      onChange = {this.onChange} 
+      />
+    </label>
+    </Col>
   <Col md={4}>
     <label id='signlable'>*Name
       <FormControl type="text" name="name" placeholder="Name" autoFocus required
@@ -88,7 +97,7 @@ class SignUpForm extends React.Component {
   </label><br />    
   </Col>
   <Col md={4}>
-    <label id='signlable' onChange={this.onChange}>*Gender
+    <label id='signlable' name="gender" onChange={this.onChange}>*Gender
     <Radio name="groupOptions">femal</Radio>
     <Radio name="groupOptions">male</Radio>
     </label>
