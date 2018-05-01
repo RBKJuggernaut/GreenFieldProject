@@ -47,6 +47,23 @@ app.use(session({
 // 	next();
 // })
 
+
+
+// to handle /users request to retrive all users
+app.get('/users',function(req,res){
+	Users.retriveALlUsers(function(err,data){
+		if (err){
+			res.status(500);
+			res.send(err);
+		}
+		else{
+			res.status(200);
+			res.send(data);
+		}
+	})
+})
+
+
 //it renders all the jobs
 app.get('/jobs', function(req, res){
 	Jobs.allJobs(function(err, jobs){
@@ -74,7 +91,16 @@ app.get('/userJobs', function(req, res){
 		}
 	});
 });
-
+app.get('/userJobss/:userName', function(req, res){
+	console.log(req.params.userName)
+	Jobs.jobByUserName({"user": req.params.userName}, function(err, job){
+		if(err){
+			console.log(err);
+		} else {
+			res.send(job);
+		}
+	});
+});
 //??
 app.post('/userJob', function(req, res){
 		Jobs.getUserJob(req.body.jobTitle,req.body.user, function(err, user){
@@ -176,6 +202,19 @@ app.post('/someJobs', function (req, res) {
 			console.log(err);
 		} else {
 			res.send(jobs);
+		}
+	});
+});
+
+
+// search users
+app.post('/findUser', function (req, res) {
+	
+	Users.findUserr({"userName":req.body.userName}, function(err, user){
+		if(err){
+			console.log(err);
+		} else {
+			res.send(user);
 		}
 	});
 });

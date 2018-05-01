@@ -54,6 +54,28 @@ var createUsers = function(data, callback){
   ///save to database
   Users.create(userdata, callback);
 };
+
+
+// a function to retrive all users 
+
+var retriveALlUsers=function(callback){
+
+  Users.find({},'name email gender age phoneNumber nationality rate address',function(data,err){
+    if (err){
+      callback(err,null);
+    }
+    else{
+      callback(null,data)
+    }
+
+  })
+}
+
+
+
+
+
+
 var getUser = function(userName, password, callback){
   ///query for checking the usename
   var query = Users.where({ userName: userName });
@@ -76,6 +98,17 @@ var getUser = function(userName, password, callback){
     
       
       }
+  });
+};
+var findUserr = function(userName, callback){
+  ///query for checking the usename
+  
+  Users.find(userName).exec(function(err, data){
+     if(err){
+      callback(err, null)
+    } else {
+    callback(null, data)
+  }
   });
 };
 
@@ -105,5 +138,7 @@ module.exports.updateUsers = updateUsers;
 module.exports.deleteUser = deleteUser;
 module.exports.getUser = getUser;
 module.exports.getUserInfo = getUserInfo;
+module.exports.retriveALlUsers=retriveALlUsers;
+module.exports.findUserr=findUserr;
 
 
