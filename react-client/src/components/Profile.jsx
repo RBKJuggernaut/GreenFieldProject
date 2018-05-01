@@ -51,6 +51,7 @@ render() {
     <div className="col-md-4 " >
     <img src={this.state.user.image}/>
     
+    
     </div>
     <div className="col-md-8">
 
