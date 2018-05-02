@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import HomeDisplay from './HomeDisplay.jsx';
+import JobList from './JobList.jsx';
 import Search from './Search.jsx'
 
 class NotAuthenticatedHome extends React.Component {
@@ -64,10 +64,7 @@ class NotAuthenticatedHome extends React.Component {
 }
 
 render() {
-  var arr = [];
-    this.state.items.forEach(function(item) {
-      arr.push(<HomeDisplay item={item} />)
-    })
+  
   return (
   
     <div>
@@ -76,7 +73,12 @@ render() {
     <Search searchJobTitle={this.searchJobTitle.bind(this)} searchJobCategory={this.searchJobCategory.bind(this)} />
     </div>
     <div>
-    {arr}
+    {this.state.items.map(function(item){
+      return (
+
+        <JobList item={item}/>
+        )
+      })}
     </div>
     </div>
     

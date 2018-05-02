@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import HomeDisplay from './HomeDisplay.jsx';
+import JobList from './JobList.jsx';
 import Search from './Search.jsx'
 
 class Home extends React.Component {
@@ -14,7 +14,7 @@ class Home extends React.Component {
   logout(event) {
     var that=this
     event.preventDefault();
-    axios.post('/logout', this.state.states)
+    axios.get('/logout', that.state.states)
         .then(function (response) {
         window.location.href = "/login";
         })
@@ -51,23 +51,21 @@ class Home extends React.Component {
 
 //make new get requests for each filter
   componentDidMount() {
-    console.log("hi");
+    var that=this ;
     axios.get('/jobs')
     .then(response => {
     const posts = response.data;
-    this.setState({items:posts});
+    that.setState({items:posts});
     
   })
   .catch(function (error) {
     console.log(error);
   });
+  
 }
 
 render() {
-  var arr = [];
-    this.state.items.forEach(function(item) {
-      arr.push(<HomeDisplay item={item} />)
-    })
+  
   return (
   
     <div id='home'>
@@ -76,7 +74,13 @@ render() {
     <Search searchJobTitle={this.searchJobTitle.bind(this)} searchJobCategory={this.searchJobCategory.bind(this)} />
     </div>
     <div>
-    {arr}
+    {this.state.items.map(function(item){
+      return (
+
+        <JobList item={item}/>
+        )
+    })}
+    
     </div>
     </div>
     

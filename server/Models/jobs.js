@@ -24,7 +24,21 @@ var jobsSchema = mongoose.Schema({
   {
     type:Date,
     default:Date.now
-  }
+  },
+
+  comments:{
+  	type:[{username:String,comment:String}],
+   },
+
+   interestedUsers:{
+   	type:[String]
+   },
+
+   takenBy:{
+   	type:String
+
+   }
+
 });
 
 
@@ -41,6 +55,10 @@ var createJob = function(userName,data, callback){
 // idk though
 var allJobs = function (callback){
    Jobs.aggregate([
+
+   	{$sort:
+       {created_at:-1}
+    },
    {
      $lookup:
        {
@@ -49,7 +67,7 @@ var allJobs = function (callback){
          foreignField: "userName",
          as: "userInfo"
        }
-  }
+   }
 ], function (err, data) {
         if (err) {
           console.log(err);
