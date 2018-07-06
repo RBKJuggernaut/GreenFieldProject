@@ -1,8 +1,8 @@
-var mongoose = require('mongoose');
+let mongoose = require('mongoose');
 
 
-////Jobs Schema
-var jobsSchema = mongoose.Schema({
+//// Jobs Schema
+let jobsSchema = mongoose.Schema({
   user: 
   {
     type: String,
@@ -27,19 +27,15 @@ var jobsSchema = mongoose.Schema({
   }
 });
 
+///// Jobs Model
+let Jobs = mongoose.model('Jobs', jobsSchema);
 
-/////Jobs Model
-var Jobs = mongoose.model('Jobs', jobsSchema);
-
-var createJob = function(userName,data, callback){
+let createJob = function(userName,data, callback){
   data["user"]=userName;
   Jobs.create(data, callback)
 };
 
-// i think we don't need to pass data because 
-// it's gonna retrive all the jobs n the schema 
-// idk though
-var allJobs = function (callback){
+let allJobs = function (callback){
    Jobs.aggregate([
    {
      $lookup:
@@ -52,15 +48,14 @@ var allJobs = function (callback){
   }
 ], function (err, data) {
         if (err) {
-          console.log(err);
+          throw err;
             callback(err, null);
         }
-        console.log(data);
         callback(null, data)
     });
 };
 
-var jobByTitle = function (jobTitle, callback){
+let jobByTitle = function (jobTitle, callback){
   Jobs.findOne({jobTitle: jobTitle}, function(err, data){
     if(err){
       callback(err, null)
@@ -70,7 +65,7 @@ var jobByTitle = function (jobTitle, callback){
   });
 };
 
-var getUserJob = function (jobTitle,user, callback){
+let getUserJob = function (jobTitle,user, callback){
   Jobs.findOne({"jobTitle": jobTitle,"user":user}, function(err, data){
     if(err){
       callback(err, null)
@@ -80,16 +75,12 @@ var getUserJob = function (jobTitle,user, callback){
   });
 };
 
-var findSome = function(title, callback){
-
-var regexValue = '\.*'+title+'\.*';
-
-
+let findSome = function(title, callback){
+let regexValue = '\.*'+title+'\.*';
  Jobs.aggregate([
     {$match:{"jobTitle":new RegExp(regexValue, 'i')}},
    {
-    
-     $lookup:
+    $lookup:
        {
          from: "users",
          localField: "user",
@@ -100,32 +91,30 @@ var regexValue = '\.*'+title+'\.*';
   
 ], function (err, data) {
         if (err) {
-          console.log(err);
+          throw err;
             callback(err, null);
         }
-        console.log(data);
-        callback(null, data)
+        callback(null, data);
     });
   
 };
-var jobByUserName = function(userName, callback){
-  
+
+let jobByUserName = function(userName, callback){
   Jobs.find(userName).exec(function(err, data){
      if(err){
-      callback(err, null)
+      callback(err, null);
     } else {
-    callback(null, data)
+    callback(null, data);
   }
   });
 };
 
-var jobsByCategory = function(category, callback){
-  if(category.category!=="All"){
+let jobsByCategory = function(category, callback){
+  if(category.category !== "All"){
    Jobs.aggregate([
     {$match:{"category":category.category}},
    {
-    
-     $lookup:
+    $lookup:
        {
          from: "users",
          localField: "user",
@@ -136,13 +125,12 @@ var jobsByCategory = function(category, callback){
   
 ], function (err, data) {
         if (err) {
-          console.log(err);
+          throw err;
             callback(err, null);
         }
-        console.log(data);
         callback(null, data)
     });
- }else{
+ } else {
    Jobs.aggregate([
    {
      $lookup:
@@ -155,17 +143,16 @@ var jobsByCategory = function(category, callback){
   }
 ], function (err, data) {
         if (err) {
-          console.log(err);
+          throw err;
             callback(err, null);
         }
-        console.log(data);
         callback(null, data)
     });
  }
   
 };
 
-var jobsByStartTime = function(from, callback){
+let jobsByStartTime = function(from, callback){
   Jobs.find({from: from}, function(err, data){
     if(err){
       callback(err, null)
@@ -175,7 +162,7 @@ var jobsByStartTime = function(from, callback){
   });
 };
 
-var jobsByEndTime = function(to, callback){
+let jobsByEndTime = function(to, callback){
   Jobs.find({to: to}, function(err, data){
     if(err){
       callback(err, null)
@@ -185,14 +172,14 @@ var jobsByEndTime = function(to, callback){
   });
 };
 
-var updateUserJob = function(jobTitle,user, updatedData, callback){
+let updateUserJob = function(jobTitle,user, updatedData, callback){
   Jobs.findOneAndUpdate({jobTitle: jobTitle,user:user}, {$set: updatedData}, callback)
 };
-var updateJobs = function(jobTitle, updatedData, callback){
+let updateJobs = function(jobTitle, updatedData, callback){
   Jobs.findOneAndUpdate({jobTitle: jobTitle}, {$set: updatedData}, callback)
 };
 
-var deleteJob = function(jobTitle, callback){
+let deleteJob = function(jobTitle, callback){
   Jobs.deleteOne({jobTitle: jobTitle}, callback)
 };
 
